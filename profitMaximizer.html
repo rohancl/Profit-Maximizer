@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src= 
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+      </script> 
+      
+    <script type="text/javascript">
+     function HCFnikalsale(x, y) {
+  if ((typeof x !== 'number') || (typeof y !== 'number')) 
+        return false;
+  while(y) {
+    var t = y;
+    y = x % y;
+    x = t;
+  }
+  return x;
+}
+      function myFunction() {
+        $(document).ready(function() { 
+  
+  $("button").click(function() { 
+    var coa =  $(".coa:text").val();
+    var cob =  $(".cob:text").val();
+    var ppa =  $(".ppa:text").val();
+    var ppb =  $(".ppb:text").val();
+    var budget =  $(".bud:text").val();
+    var maxpcs =  $(".maxpcs:text").val();
+    document.getElementById("profitperA").innerHTML = ppa;  
+    document.getElementById("profitperB").innerHTML = ppb; 
+    document.getElementById("costofA").innerHTML = coa;  
+    document.getElementById("costofB").innerHTML = cob;  
+    document.getElementById("budget").innerHTML = budget; 
+    document.getElementById("maxno").innerHTML = maxpcs; 
+    var scoa=coa/cob;
+    var scob= 1;
+    var sbudget= budget/cob;
+    document.getElementById("scostofA").innerHTML = scoa; 
+    document.getElementById("scostofB").innerHTML = scob; 
+    document.getElementById("sbudget").innerHTML = sbudget; 
+    var aaa=parseFloat(sbudget/scoa);
+    var bbb=0;
+    var ccc=0;
+    let ddd=parseFloat(sbudget/scob);
+    var eee=parseFloat(maxpcs);
+    var fff=0;
+    var ggg=0;
+    var hhh=parseFloat(maxpcs);
+    document.getElementById("aaa").innerHTML = aaa; 
+    document.getElementById("ddd").innerHTML = ddd; 
+    document.getElementById("eee").innerHTML = eee; 
+    document.getElementById("hhh").innerHTML = hhh; 
+    console.log(HCFnikalsale(parseFloat(ddd), parseFloat(hhh)));
+
+    google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['X vs Y graph', 'Equation'],
+          [aaa,     ccc],
+          [bbb,     ddd],
+          [eee,     ggg],
+          [fff,     hhh],
+        ]);
+
+        var options = {
+          title: 'LPP GRAPH',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+      
+  }); 
+
+}); 
+}
+$(document).ready(function(){
+$(".twitter").hover(function () {
+	$("#lolbe").toggleClass("color-twitter")
+});
+
+$(".facebook").hover(function () {
+	$("#lolbe").toggleClass("color-facebook")
+});
+
+$(".googleplus").hover(function () {
+	$("#lolbe").toggleClass("color-googleplus")
+});
+
+
+
+});
+</script>
+</head>
+<body>
+    <div id="lolbe">
+        <div class="pulsating-circle"></div>
+        <h1 class="mah">Profit Specifier</h1>  
+        <div id="social-section">  
+            <div class="social-container">
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i>Twitter</a>
+            
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i>Facebook</a>
+            
+            <a href="#" class="googleplus"><i class="fa fa-linkedin"></i>Linked In</a>
+            </div>
+            </div>
+        </div>
+    <div class="result"></div>
+    <div class="tabs">
+        <input type="radio" name="tabs" id="tabone" checked="checked">
+        <label for="tabone">Input Details</label>
+        <div class="tab">
+            <h1>Please Fill In</h1>
+            <div class="mygod"> 
+                <div class="getval">Cost of A<p>    <input class="coa" type="text" name="user" value=""></p></div>
+                <div class="getval">Cost of B<p>    <input class="cob" type="text" name="user" value=""></p></div>
+                <div class="getval">Profit per A<p> <input class="ppa" type="text" name="user" value=""></p></div>
+                <div class="getval">Profit per B<p> <input class="ppb" type="text" name="user" value=""></p></div>
+                <div class="getval">Budget<p>       <input class="bud" type="text" name="user" value=""></p></div>
+                <div class="getval">Max no. of Pieces<p><input   class="maxpcs" type="text" name="user" value=""></p></div>
+                <br>
+                <button onclick="myFunction()" class="woah" type="submit">Submit Data</button>
+                </div>
+        </div>
+        
+        <input type="radio" name="tabs" id="tabtwo">
+        <label for="tabtwo">Equations</label>
+        <div class="tab">
+            <h2> Let the Number of A present be 'X'...<br> And the Number of B present by 'Y' ...</h2>
+            <h3>And Max Profit = <span id="profitperA">[profit by A]</span>*X + <span id="profitperB">[profit by B]</span>*Y<br><span id="costofA">[Cost of A]</span>*X + <span id="costofB">[Cost of B]</span>*Y = <span id="budget">[budget]</span>
+            <br>Simplified Expression: <span id="scostofA">[Simplified Cost of A]</span>*X + <span id="scostofB">[Simplified Cost of B]</span>*Y = <span id="sbudget">[Simplified budget]</span>
+            <br>Also X+Y = <span id="maxno">[Max number of Pieces]</span>
+            </h3>
+        </div>
+        
+        <input type="radio" name="tabs" id="tabthree">
+        <label for="tabthree">Tables</label>
+        <div class="tab">
+            <table style="width:50%">
+
+                <tr>
+                  <td>X</td>
+                  <td><span id="aaa">aaa</span></td>
+                  <td><span id="bbb">0</span></td>
+                </tr>
+                <tr>
+                  <td>Y</td>
+                  <td><span id="ccc">0</span></td>
+                  <td><span id="ddd">ddd</span></td>
+                </tr>
+        
+              </table>
+              <br><br>
+            <table style="width:50%">
+                <tr>
+                  <td>X</td>
+                  <td><span id="eee">eee</span></td>
+                  <td><span id="fff">0</span></td>
+                </tr>
+                <tr>
+                  <td>Y</td>
+                  <td><span id="ggg">0</span></td>
+                  <td><span id="hhh">hhh</span></td>
+                </tr>
+              </table>
+        </div>
+
+        <input type="radio" name="tabs" id="tabfour">
+        <label for="tabfour">LP Graph</label>
+        <div class="tab">
+          <div id="chart_div" style="width: 100%; height: 500px;"><div style="position: relative;"><div dir="ltr" style="position: relative; width: 1247px; height: 500px;"><div aria-label="A chart." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="1247" height="500" aria-label="A chart." style="overflow: hidden;"><defs id="_ABSTRACT_RENDERER_ID_0"><clipPath id="_ABSTRACT_RENDERER_ID_1"><rect x="183" y="96" width="882" height="309"></rect></clipPath></defs><rect x="0" y="0" width="1247" height="500" stroke="none" stroke-width="0" fill="#ffffff"></rect><g><text text-anchor="start" x="183" y="69.75" font-family="Arial" font-size="15" font-weight="bold" stroke="none" stroke-width="0" fill="#000000">LPP GRAPH</text><rect x="183" y="57" width="882" height="15" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect></g><g><rect x="1080" y="96" width="152" height="15" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><rect x="1080" y="96" width="152" height="15" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="1116" y="108.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#222222">Equation 2</text></g><rect x="1080" y="103.5" width="30" height="7.5" stroke="none" stroke-width="0" fill-opacity="0.3" fill="#3366cc"></rect><path d="M1080,103.5L1110,103.5" stroke="#3366cc" stroke-width="2" fill-opacity="1" fill="none"></path></g></g><g><rect x="183" y="96" width="882" height="309" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g clip-path="url(file:///C:/Users/Asus/Desktop/Yop/index.html#_ABSTRACT_RENDERER_ID_1)"><g><rect x="183" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="271" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="359" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="447" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="535" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="624" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="712" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="800" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="888" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="976" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="1064" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="227" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="315" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="403" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="491" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="579" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="668" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="756" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="844" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="932" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="1020" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="183" y="404" width="882" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="183" y="327" width="882" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="183" y="250" width="882" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="183" y="173" width="882" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="183" y="96" width="882" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="183" y="366" width="882" height="1" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="183" y="289" width="882" height="1" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="183" y="212" width="882" height="1" stroke="none" stroke-width="0" fill="#ebebeb"></rect><rect x="183" y="135" width="882" height="1" stroke="none" stroke-width="0" fill="#ebebeb"></rect></g><g><g></g></g><g><rect x="624" y="96" width="1" height="309" stroke="none" stroke-width="0" fill="#333333"></rect><rect x="183" y="250" width="882" height="1" stroke="none" stroke-width="0" fill="#333333"></rect></g></g><g></g><g><g><text text-anchor="middle" x="183.5" y="426.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">-1.0</text></g><g><text text-anchor="middle" x="271.6" y="426.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">-0.8</text></g><g><text text-anchor="middle" x="359.7" y="426.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">-0.6</text></g><g><text text-anchor="middle" x="447.8" y="426.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">-0.4</text></g><g><text text-anchor="middle" x="535.9" y="426.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">-0.2</text></g><g><text text-anchor="middle" x="624" y="426.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">0.0</text></g><g><text text-anchor="middle" x="712.1" y="426.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">0.2</text></g><g><text text-anchor="middle" x="800.2" y="426.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">0.4</text></g><g><text text-anchor="middle" x="888.3" y="426.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">0.6</text></g><g><text text-anchor="middle" x="976.4" y="426.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">0.8</text></g><g><text text-anchor="middle" x="1064.5" y="426.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">1.0</text></g><g><text text-anchor="end" x="168" y="409.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">-1.0</text></g><g><text text-anchor="end" x="168" y="332.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">-0.5</text></g><g><text text-anchor="end" x="168" y="255.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">0.0</text></g><g><text text-anchor="end" x="168" y="178.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">0.5</text></g><g><text text-anchor="end" x="168" y="101.75" font-family="Arial" font-size="15" stroke="none" stroke-width="0" fill="#444444">1.0</text></g></g></g><g><g><text text-anchor="middle" x="624" y="469.75" font-family="Arial" font-size="15" font-style="italic" stroke="none" stroke-width="0" fill="#333333">Year</text><rect x="183" y="457" width="882" height="15" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect></g></g><g></g></svg><div aria-label="A tabular representation of the data in the chart." style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><table><thead><tr><th>Year</th><th>Equation 2</th></tr></thead><tbody><tr><td>NaN</td><td>0</td></tr><tr><td>0</td><td>NaN</td></tr><tr><td>NaN</td><td>0</td></tr><tr><td>0</td><td>NaN</td></tr></tbody></table></div></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 510px; left: 1257px; white-space: nowrap; font-family: Arial; font-size: 15px;">Equation 2</div><div></div></div></div>
+        </div>
+      </div>
+
+</body>
+</html>
+<style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css');
+/**
+ * Tabs
+ */
+ .twitter:hover {
+ color: #00aced;
+ }
+ .twitter:active {
+ color: #00aced;
+ }
+ .facebook:hover {
+   color: #3b5998
+ }
+.googleplus:hover {
+ color: #0e76a8 ;
+}
+ .tabs {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  right: 0;
+  width:50%;
+}
+.mah {
+    color:whitesmoke;
+    font-size: 3em;
+    padding-left:120px;
+}
+#lolbe {
+    height: 100%;
+    height: auto;
+    min-height: 100%;
+    width:50%;
+    background-color: black;
+    position: absolute;
+    top:0;
+}
+.card {
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  height: auto;
+  
+  padding:40px;
+  margin: 1rem;
+  width: 500px;
+}
+.card:hover {
+    cursor: pointer;
+}
+
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card-2 {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card-3 {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.card-4 {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card-5 {
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+
+.tabs label {
+  order: 1;
+  display: block;
+  padding: 1rem 2rem;
+  margin-right: 0.2rem;
+  cursor: pointer;
+  background: whitesmoke;
+  font-weight: bold;
+  transition: background ease 0.2s;
+}
+.tabs label:hover {
+  color: whitesmoke;
+  background: black;
+
+}
+
+.tabs .tab {
+  order: 99;
+  flex-grow: 1;
+  width: 100%;
+  min-height: 100%;
+  display: none;
+  padding: 1rem;
+  background: #fff;
+}
+
+.tabs input[type="radio"] {
+  display: none;
+}
+
+.tabs input[type="radio"]:checked + label {
+  background:black;
+  color: whitesmoke;
+}
+
+.tabs input[type="radio"]:checked + label + .tab {
+  display: block;
+}
+
+@media (max-width: 45em) {
+  .tabs .tab,
+  .tabs label {
+    order: initial;
+  }
+
+  .tabs label {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 0.2rem;
+  }
+}
+/**
+ * Generic Styling
+*/
+body {
+  background: #eee;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  overflow-x: hidden;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0 auto;
+  font-size: 112%;
+}
+.pulsating-circle {
+  position: absolute;
+  left: 60px;
+  top: 80px;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  width: 30px;
+  height: 30px;
+}
+.pulsating-circle:before {
+  content: '';
+  position: relative;
+  display: block;
+  width: 300%;
+  height: 300%;
+  box-sizing: border-box;
+  margin-left: -100%;
+  margin-top: -100%;
+  border-radius: 45px;
+  background-color: #01a4e9;
+  -webkit-animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+          animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+.pulsating-circle:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  -webkit-animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+          animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+}
+
+@-webkit-keyframes pulse-ring {
+  0% {
+    -webkit-transform: scale(0.33);
+            transform: scale(0.33);
+  }
+  80%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    -webkit-transform: scale(0.33);
+            transform: scale(0.33);
+  }
+  80%, 100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes pulse-dot {
+  0% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+}
+@keyframes pulse-dot {
+  0% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+}
+
+.social-container {
+	margin:0 auto;
+  padding: 40px 0;
+	width:200px;
+  height:100%;
+}
+
+/* Add this ID to a section or something you want to change the background-color */
+#social-section {
+  padding:60px 0;
+  -webkit-transition: all .2s ease-out;
+-moz-transition: all .2s ease-out;
+-ms-transition: all .2s ease-out;
+-o-transition: all .2s ease-out;
+transition: all .2s ease-out;
+}
+
+/* Button Styles */
+.social-container a {
+display: block;
+width:200px;
+line-height: 40px;
+border: 2px solid whitesmoke;
+color:whitesmoke;
+margin:20px 0;
+text-decoration: none;
+text-align:center;
+}
+
+.social-container a i {
+margin-right: 15px;   
+}
+
+.social-container a:hover  {
+border: 2px solid whitesmoke;
+background-color: whitesmoke;
+}
+/* Hover background colors */
+.color-twitter {
+  background-color: #00aced !important;
+}
+.color-facebook {
+  background-color: #3b5998 !important;
+}
+.color-pinterest {
+  background-color: #cc2127 !important;
+}
+.color-googleplus {
+  background-color: #0e76a8  !important;
+}
+.color-dribbble {
+  background-color: #ea4c89 !important;
+}
+.color-instagram {
+  background-color: #417399 !important;
+}
+
+.color-twitter,
+.color-facebook,
+.color-pinterest,
+.color-googleplus,
+.color-dribbble,
+.color-instagram {
+-webkit-transition: all .2s ease-in;
+-moz-transition: all .2s ease-in;
+-ms-transition: all .2s ease-in;
+-o-transition: all .2s ease-in;
+transition: all .2s ease-in;
+}
+.mygod .getval {
+    display: inline-block;
+    padding: 10px;
+}
+.mygod  {
+
+}
+.woah {
+ width:100px;
+ height: 30px;
+ background-color: black;
+ color: whitesmoke;
+}
+.woah:hover {
+    background-color: whitesmoke;
+ color: black;
+ cursor: pointer;
+}
+table, th, td {
+  border: 1px solid black;
+}
+
+</style>
+<script>
+</script>
